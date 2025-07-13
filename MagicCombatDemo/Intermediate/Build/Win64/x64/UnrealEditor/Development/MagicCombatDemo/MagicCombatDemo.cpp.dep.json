@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\ceret\\onedrive\\desktop\\magiccombatdemo\\source\\magiccombatdemo\\magiccombatdemo.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\ceret\\onedrive\\desktop\\magiccombatdemo\\intermediate\\build\\win64\\x64\\magiccombatdemoeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\ceret\\onedrive\\desktop\\magiccombatdemo\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\magiccombatdemo\\definitions.magiccombatdemo.h",
+            "c:\\users\\ceret\\onedrive\\desktop\\magiccombatdemo\\source\\magiccombatdemo\\magiccombatdemo.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

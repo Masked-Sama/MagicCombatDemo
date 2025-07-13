@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MagicCombatDemo",
+			"Path": "..\\Source\\MagicCombatDemo.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MagicCombatDemoEditor",
+			"Path": "..\\Source\\MagicCombatDemoEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
