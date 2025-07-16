@@ -1,0 +1,29 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/BP_ShowcaseCharacter.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/BP_ShowcaseGameMode.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/ThirdPerson/Maps/ThirdPersonMap.umap",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_CastFireball.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_CastShield.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_CastTeleport.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/IMC_Showcase.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/ThirdPerson/Input/Actions/IA_CastTeleport.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/ThirdPerson/Input/Actions/IA_CastShield.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/ThirdPerson/Input/Actions/IA_CastFireball.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_FireballSpell.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_ShieldSpell.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_TeleportSpell.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_Move.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_Look.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/Actions/IA_Jump.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/IMC_ShowCaseInput.uasset",
+				"C:/Users/ceret/OneDrive/Desktop/MyCareerPersonalProject/MagicCombat/MagicCombatDemo/MagicCombatDemo/Content/Custom/Input/IMC_Default1.uasset"
+			]
+		}
+	]
+}

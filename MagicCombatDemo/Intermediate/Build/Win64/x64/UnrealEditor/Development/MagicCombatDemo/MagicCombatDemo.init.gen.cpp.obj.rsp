@@ -1,11 +1,11 @@
-"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\UnrealEditor\Inc\MagicCombatDemo\UHT\MagicCombatDemo.init.gen.cpp"
-/FI"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-/FI"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\Definitions.MagicCombatDemo.h"
-/Yu"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
-/Fp"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.pch"
-/Fo"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.init.gen.cpp.obj"
-/sourceDependencies "C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.init.gen.cpp.dep.json"
-@"C:\Users\ceret\OneDrive\Desktop\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.Shared.rsp"
+"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\UnrealEditor\Inc\MagicCombatDemo\UHT\MagicCombatDemo.init.gen.cpp"
+/FI"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
+/FI"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\Definitions.MagicCombatDemo.h"
+/Yu"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h"
+/Fp"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.pch"
+/Fo"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.init.gen.cpp.obj"
+/sourceDependencies "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.init.gen.cpp.dep.json"
+@"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.Shared.rsp"
 /Zc:inline
 /nologo
 /Oi
