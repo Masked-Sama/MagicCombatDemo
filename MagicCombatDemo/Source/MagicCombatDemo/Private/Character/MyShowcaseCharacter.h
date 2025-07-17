@@ -51,7 +51,7 @@ protected:
 
 #pragma region Abilities
 
-	/*--- Abilities Actions ---*/
+	/* Abilities Actions */
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastFireballAction;
@@ -63,7 +63,7 @@ protected:
 	UInputAction* CastTeleportAction;
 
 
-	/*--- Abilities Functions ---*/
+	/* Abilities Functions */
 	void CastFireball(const FInputActionValue& Value);
 	void CastShield(const FInputActionValue& Value);
 	void CastTeleport(const FInputActionValue& Value); 

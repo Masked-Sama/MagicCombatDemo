@@ -41,16 +41,6 @@ void AMyShowcaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT(" BeginPlay: Adding Mapping Context"));
-	if (ShowcaseMappingContext)
-	{
-		UE_LOG(LogTemp, Warning, TEXT(" Mapping Context is valid: %s"), *ShowcaseMappingContext->GetName());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT(" ShowcaseMappingContext is NULL!"));
-	}
-
 	// Add the Input Mapping Context to the local player
 	if (APlayerController* PC = Cast<APlayerController>(Controller))
 	{
@@ -106,8 +96,11 @@ void AMyShowcaseCharacter::Look(const FInputActionValue& Value)
 {
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
 
-	AddControllerYawInput(LookAxisVector.X);
-	AddControllerPitchInput(LookAxisVector.Y);
+	if (Controller != nullptr)
+	{
+		AddControllerYawInput(LookAxisVector.X);
+		AddControllerPitchInput(LookAxisVector.Y);
+	}
 }
 
 #pragma endregion
@@ -117,18 +110,27 @@ void AMyShowcaseCharacter::Look(const FInputActionValue& Value)
 void AMyShowcaseCharacter::CastFireball(const FInputActionValue& Value)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Cast Fireball!"));
+
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, TEXT("Cast Fireball!"));
 	// TODO: Add fireball logic
 }
 
 void AMyShowcaseCharacter::CastShield(const FInputActionValue& Value)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Cast Shield!"));
+
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Cyan, TEXT("Cast Shield!"));
 	// TODO: Add Shield logic
 }
 
 void AMyShowcaseCharacter::CastTeleport(const FInputActionValue& Value)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Cast Teleport!"));
+
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Purple, TEXT("Cast Teleport!"));
 	// TODO: Add Teleport logic
 }
 

@@ -68,11 +68,11 @@ struct Z_Construct_UClass_AMyShowcaseCharacter_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CastFireballAction_MetaData[] = {
 		{ "Category", "Input" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/*--- Abilities Actions ---*/" },
+		{ "Comment", "/* Abilities Actions */" },
 #endif
 		{ "ModuleRelativePath", "Private/Character/MyShowcaseCharacter.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "--- Abilities Actions ---" },
+		{ "ToolTip", "Abilities Actions" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CastShieldAction_MetaData[] = {
@@ -177,10 +177,10 @@ AMyShowcaseCharacter::~AMyShowcaseCharacter() {}
 struct Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMyShowcaseCharacter, AMyShowcaseCharacter::StaticClass, TEXT("AMyShowcaseCharacter"), &Z_Registration_Info_UClass_AMyShowcaseCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyShowcaseCharacter), 2995421209U) },
+		{ Z_Construct_UClass_AMyShowcaseCharacter, AMyShowcaseCharacter::StaticClass, TEXT("AMyShowcaseCharacter"), &Z_Registration_Info_UClass_AMyShowcaseCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyShowcaseCharacter), 2094394506U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_634695028(TEXT("/Script/MagicCombatDemo"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_505853784(TEXT("/Script/MagicCombatDemo"),
 	Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
