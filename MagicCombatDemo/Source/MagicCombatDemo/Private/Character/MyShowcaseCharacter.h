@@ -11,6 +11,8 @@ class UInputMappingContext;
 class UInputAction;
 class USpringArmComponent;
 class UCameraComponent;
+class UNiagaraSystem;
+class UNiagaraComponent;
 
 UCLASS()
 class AMyShowcaseCharacter : public ACharacter
@@ -24,6 +26,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	virtual void Tick(float DeltaTime);
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -31,7 +36,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputMappingContext* ShowcaseMappingContext;
 
-#pragma region Movement
+	#pragma region Movement
 
 	/* Movement Actions */
 	UPROPERTY(EditAnywhere, Category = "Input")
@@ -47,30 +52,59 @@ protected:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 
-#pragma endregion
+	#pragma endregion
 
-#pragma region Abilities
+	#pragma region Abilities
 
-	/* Abilities Actions */
+	#pragma region FireBall
+	
+	/* Properties */
 
+	UPROPERTY(EditAnywhere, Category = "Abilities_Fireball")
+	UNiagaraSystem* FireballChargeEffect;
+
+	UPROPERTY(EditAnywhere, Category = "Abilities|Fireball")
+	float MaxFireballCharge = 3.0f; // seconds to reach full charge
+
+	UPROPERTY()
+	UNiagaraComponent* FireballChargeComponent;
+
+	/* Variables */
+	bool bIsFireballCharging = false;
+	float CurrentFireballCharge = 0.0f;
+
+	/* Input Property + Function*/
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastFireballAction;
+
+	void CastFireball(const FInputActionValue& Value);
+
+	/* Charging Functions */
+	void StartChargingFireball(const FInputActionValue& Value);
+	void UpdateChargingFireball(float DeltaTime);
+	void ReleaseFireball(const FInputActionValue& Value);
+
+	#pragma endregion
+
+	#pragma region Shield
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastShieldAction;
 
+	void CastShield(const FInputActionValue& Value);
+	#pragma endregion
+
+	#pragma region Teleport
+
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastTeleportAction;
 
+	void CastTeleport(const FInputActionValue& Value);
+	#pragma endregion
 
-	/* Abilities Functions */
-	void CastFireball(const FInputActionValue& Value);
-	void CastShield(const FInputActionValue& Value);
-	void CastTeleport(const FInputActionValue& Value); 
+	#pragma endregion
 
-#pragma endregion
-
-#pragma region CameraComponents
+	#pragma region CameraComponents
 	/* CameraComponents */
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
@@ -78,6 +112,6 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	UCameraComponent* FollowCamera;
-#pragma endregion
+	#pragma endregion
 
 };

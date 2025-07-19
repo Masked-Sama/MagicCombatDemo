@@ -7,6 +7,7 @@
 /IGNORE:4221
 /NODEFAULTLIB
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\MagicCombatDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\FireballProjectile.gen.cpp.obj"
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemo.init.gen.cpp.obj"
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemoCharacter.gen.cpp.obj"
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemoGameMode.gen.cpp.obj"
@@ -15,5 +16,6 @@
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemoCharacter.cpp.obj"
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MagicCombatDemoGameMode.cpp.obj"
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\MyShowcaseCharacter.cpp.obj"
+"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\FireballProjectile.cpp.obj"
 "C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\Default.rc2.res"
 /OUT:"C:\Users\ceret\OneDrive\Desktop\MyCareerPersonalProject\MagicCombat\MagicCombatDemo\MagicCombatDemo\Intermediate\Build\Win64\x64\UnrealEditor\Development\MagicCombatDemo\UnrealEditor-MagicCombatDemo.lib"

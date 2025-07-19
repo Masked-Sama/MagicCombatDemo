@@ -66,5 +66,14 @@
     <ClInclude Include="..\..\Source\MagicCombatDemo\Private\Character\MyShowcaseCharacter.h">
       <Filter>Source\MagicCombatDemo\Private\Character</Filter>
     </ClInclude>
+    <Filter Include="Source\MagicCombatDemo\Private\FireballProjectile">
+      <UniqueIdentifier>{E57C37F9-13B9-3BC1-BEA6-260E3C880101}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\MagicCombatDemo\Private\FireballProjectile\FireballProjectile.cpp">
+      <Filter>Source\MagicCombatDemo\Private\FireballProjectile</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MagicCombatDemo\Private\FireballProjectile\FireballProjectile.h">
+      <Filter>Source\MagicCombatDemo\Private\FireballProjectile</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

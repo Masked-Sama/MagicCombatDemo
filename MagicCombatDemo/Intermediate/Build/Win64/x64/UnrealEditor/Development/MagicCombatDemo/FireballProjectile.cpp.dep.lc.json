@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\ceret\\onedrive\\desktop\\mycareerpersonalproject\\magiccombat\\magiccombatdemo\\magiccombatdemo\\source\\magiccombatdemo\\private\\fireballprojectile\\fireballprojectile.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\users\\ceret\\onedrive\\desktop\\mycareerpersonalproject\\magiccombat\\magiccombatdemo\\magiccombatdemo\\intermediate\\build\\win64\\x64\\magiccombatdemoeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\users\\ceret\\onedrive\\desktop\\mycareerpersonalproject\\magiccombat\\magiccombatdemo\\magiccombatdemo\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\magiccombatdemo\\definitions.magiccombatdemo.h",
+            "c:\\users\\ceret\\onedrive\\desktop\\mycareerpersonalproject\\magiccombat\\magiccombatdemo\\magiccombatdemo\\source\\magiccombatdemo\\private\\fireballprojectile\\fireballprojectile.h",
+            "c:\\users\\ceret\\onedrive\\desktop\\mycareerpersonalproject\\magiccombat\\magiccombatdemo\\magiccombatdemo\\intermediate\\build\\win64\\unrealeditor\\inc\\magiccombatdemo\\uht\\fireballprojectile.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

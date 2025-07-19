@@ -17,6 +17,8 @@ ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 MAGICCOMBATDEMO_API UClass* Z_Construct_UClass_AMyShowcaseCharacter();
 MAGICCOMBATDEMO_API UClass* Z_Construct_UClass_AMyShowcaseCharacter_NoRegister();
+NIAGARA_API UClass* Z_Construct_UClass_UNiagaraComponent_NoRegister();
+NIAGARA_API UClass* Z_Construct_UClass_UNiagaraSystem_NoRegister();
 UPackage* Z_Construct_UPackage__Script_MagicCombatDemo();
 // End Cross Module References
 
@@ -65,14 +67,38 @@ struct Z_Construct_UClass_AMyShowcaseCharacter_Statics
 		{ "Category", "Input" },
 		{ "ModuleRelativePath", "Private/Character/MyShowcaseCharacter.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CastFireballAction_MetaData[] = {
-		{ "Category", "Input" },
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FireballChargeEffect_MetaData[] = {
+		{ "Category", "Abilities_Fireball" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "/* Abilities Actions */" },
+		{ "Comment", "/* Properties */" },
 #endif
 		{ "ModuleRelativePath", "Private/Character/MyShowcaseCharacter.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Abilities Actions" },
+		{ "ToolTip", "Properties" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MaxFireballCharge_MetaData[] = {
+		{ "Category", "Abilities|Fireball" },
+		{ "ModuleRelativePath", "Private/Character/MyShowcaseCharacter.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FireballChargeComponent_MetaData[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// seconds to reach full charge\n" },
+#endif
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Private/Character/MyShowcaseCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "seconds to reach full charge" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CastFireballAction_MetaData[] = {
+		{ "Category", "Input" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/* Input Property + Function*/" },
+#endif
+		{ "ModuleRelativePath", "Private/Character/MyShowcaseCharacter.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Input Property + Function" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CastShieldAction_MetaData[] = {
@@ -104,6 +130,9 @@ struct Z_Construct_UClass_AMyShowcaseCharacter_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MoveAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_LookAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_JumpAction;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_FireballChargeEffect;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxFireballCharge;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_FireballChargeComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CastFireballAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CastShieldAction;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CastTeleportAction;
@@ -120,6 +149,9 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCha
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_MoveAction = { "MoveAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, MoveAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MoveAction_MetaData), NewProp_MoveAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_LookAction = { "LookAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, LookAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_LookAction_MetaData), NewProp_LookAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_JumpAction = { "JumpAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, JumpAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_JumpAction_MetaData), NewProp_JumpAction_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_FireballChargeEffect = { "FireballChargeEffect", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, FireballChargeEffect), Z_Construct_UClass_UNiagaraSystem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FireballChargeEffect_MetaData), NewProp_FireballChargeEffect_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_MaxFireballCharge = { "MaxFireballCharge", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, MaxFireballCharge), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxFireballCharge_MetaData), NewProp_MaxFireballCharge_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_FireballChargeComponent = { "FireballChargeComponent", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, FireballChargeComponent), Z_Construct_UClass_UNiagaraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FireballChargeComponent_MetaData), NewProp_FireballChargeComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_CastFireballAction = { "CastFireballAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, CastFireballAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CastFireballAction_MetaData), NewProp_CastFireballAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_CastShieldAction = { "CastShieldAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, CastShieldAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CastShieldAction_MetaData), NewProp_CastShieldAction_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_CastTeleportAction = { "CastTeleportAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyShowcaseCharacter, CastTeleportAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CastTeleportAction_MetaData), NewProp_CastTeleportAction_MetaData) };
@@ -130,6 +162,9 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyShowca
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_MoveAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_LookAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_JumpAction,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_FireballChargeEffect,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_MaxFireballCharge,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_FireballChargeComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_CastFireballAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_CastShieldAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyShowcaseCharacter_Statics::NewProp_CastTeleportAction,
@@ -177,10 +212,10 @@ AMyShowcaseCharacter::~AMyShowcaseCharacter() {}
 struct Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMyShowcaseCharacter, AMyShowcaseCharacter::StaticClass, TEXT("AMyShowcaseCharacter"), &Z_Registration_Info_UClass_AMyShowcaseCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyShowcaseCharacter), 2094394506U) },
+		{ Z_Construct_UClass_AMyShowcaseCharacter, AMyShowcaseCharacter::StaticClass, TEXT("AMyShowcaseCharacter"), &Z_Registration_Info_UClass_AMyShowcaseCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyShowcaseCharacter), 2426000908U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_505853784(TEXT("/Script/MagicCombatDemo"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_834294850(TEXT("/Script/MagicCombatDemo"),
 	Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_ceret_OneDrive_Desktop_MyCareerPersonalProject_MagicCombat_MagicCombatDemo_MagicCombatDemo_Source_MagicCombatDemo_Private_Character_MyShowcaseCharacter_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

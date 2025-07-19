@@ -10,13 +10,15 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 
 // Sets default values
 AMyShowcaseCharacter::AMyShowcaseCharacter()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-#pragma region Camera Settings
+	#pragma region Camera Settings
 
 	/* Create Camera Boom (Spring Arm) */
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
@@ -32,7 +34,7 @@ AMyShowcaseCharacter::AMyShowcaseCharacter()
 	/* === Character movement defaults */
 	bUseControllerRotationYaw = false;
 	GetCharacterMovement()->bOrientRotationToMovement = true; // Character faces movement
-#pragma endregion
+	#pragma endregion
 
 }
 
@@ -52,12 +54,22 @@ void AMyShowcaseCharacter::BeginPlay()
 	}
 }
 
+void AMyShowcaseCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (bIsFireballCharging)
+	{
+		UpdateChargingFireball(DeltaTime);
+	}
+}
+
 // Called to bind functionality to input
 void AMyShowcaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-#pragma region Bindings
+	#pragma region Bindings
 
 	if (UEnhancedInputComponent* EnhancedInput = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
@@ -66,11 +78,17 @@ void AMyShowcaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 
-		EnhancedInput->BindAction(CastFireballAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::CastFireball);
+		//Fireball Ability
+		EnhancedInput->BindAction(CastFireballAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::StartChargingFireball);
+		EnhancedInput->BindAction(CastFireballAction, ETriggerEvent::Completed, this, &AMyShowcaseCharacter::ReleaseFireball);
+
+		//Shield Ability
 		EnhancedInput->BindAction(CastShieldAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::CastShield);
+
+		//Teleport Ability
 		EnhancedInput->BindAction(CastTeleportAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::CastTeleport);
 	}
-#pragma endregion
+	#pragma endregion
 }
 
 #pragma region Movement
@@ -107,6 +125,7 @@ void AMyShowcaseCharacter::Look(const FInputActionValue& Value)
 
 #pragma region Abilites
 
+#pragma region Fireball
 void AMyShowcaseCharacter::CastFireball(const FInputActionValue& Value)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Cast Fireball!"));
@@ -116,6 +135,65 @@ void AMyShowcaseCharacter::CastFireball(const FInputActionValue& Value)
 	// TODO: Add fireball logic
 }
 
+void AMyShowcaseCharacter::StartChargingFireball(const FInputActionValue& Value)
+{
+	if (bIsFireballCharging) return;																	//check if we're already in charging
+
+	//if not charging...																		
+	bIsFireballCharging = true;																			//set the boolean to true, we start charging
+	CurrentFireballCharge = 0.0f;																		//reset the charge time
+
+	if (FireballChargeEffect)																			//checking if there is a VFX for cast
+	{
+		FireballChargeComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(
+			FireballChargeEffect,
+			GetMesh(),
+			FName("RightHandSocket"), // Change if needed
+			FVector::ZeroVector,
+			FRotator::ZeroRotator,
+			EAttachLocation::SnapToTarget,
+			true
+		);
+
+		FireballChargeComponent->SetWorldScale3D(FVector(0.3f));										//set starting scale to 0.3f
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("Charging Fireball"));												//Debug Text
+}
+
+void AMyShowcaseCharacter::UpdateChargingFireball(float DeltaTime)
+{
+	CurrentFireballCharge = FMath::Clamp(CurrentFireballCharge + DeltaTime, 0.0f, MaxFireballCharge);	//clamp if already reached the roof 
+
+	float chargePercent = CurrentFireballCharge / MaxFireballCharge;									//calcolating the percentage for alpha lerp
+	float scale = FMath::Lerp(0.3f, 2.0f, chargePercent);												//it will grow from 0.3 to 2.0 its size
+
+	if (FireballChargeComponent)
+	{
+		FireballChargeComponent->SetWorldScale3D(FVector(scale));
+	}
+}
+
+void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
+{
+	if (!bIsFireballCharging) return;																	//check if we're not charging
+
+	//if charging...	
+	bIsFireballCharging = false;
+
+	UE_LOG(LogTemp, Warning, TEXT("Released Fireball! Charge: %f"), CurrentFireballCharge);				//Debug Text
+
+	if (FireballChargeComponent)
+	{
+		// Detach and let it play out
+		FireballChargeComponent->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+		FireballChargeComponent->SetAutoDestroy(true);
+		FireballChargeComponent = nullptr;
+	}
+}
+#pragma endregion
+
+#pragma region Shield
 void AMyShowcaseCharacter::CastShield(const FInputActionValue& Value)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Cast Shield!"));
@@ -124,7 +202,9 @@ void AMyShowcaseCharacter::CastShield(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Cyan, TEXT("Cast Shield!"));
 	// TODO: Add Shield logic
 }
+#pragma endregion
 
+#pragma region Teleport
 void AMyShowcaseCharacter::CastTeleport(const FInputActionValue& Value)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Cast Teleport!"));
@@ -133,6 +213,7 @@ void AMyShowcaseCharacter::CastTeleport(const FInputActionValue& Value)
 		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Purple, TEXT("Cast Teleport!"));
 	// TODO: Add Teleport logic
 }
+#pragma endregion
 
 #pragma endregion
 
