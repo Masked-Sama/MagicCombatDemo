@@ -7,12 +7,14 @@
 #include "InputActionValue.h"
 #include "MyShowcaseCharacter.generated.h"
 
+#pragma region Forward Declarations
 class UInputMappingContext;
 class UInputAction;
 class USpringArmComponent;
 class UCameraComponent;
 class UNiagaraSystem;
 class UNiagaraComponent;
+#pragma endregion
 
 UCLASS()
 class AMyShowcaseCharacter : public ACharacter
@@ -23,11 +25,12 @@ public:
 	// Sets default values for this character's properties
 	AMyShowcaseCharacter();
 
+	virtual void Tick(float DeltaTime);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	virtual void Tick(float DeltaTime);
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -77,7 +80,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastFireballAction;
 
-	void CastFireball(const FInputActionValue& Value);
+	//void CastFireball(const FInputActionValue& Value);				DEPRECATED
 
 	/* Charging Functions */
 	void StartChargingFireball(const FInputActionValue& Value);
