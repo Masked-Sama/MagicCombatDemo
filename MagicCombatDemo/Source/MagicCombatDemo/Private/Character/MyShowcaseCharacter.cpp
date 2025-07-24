@@ -139,6 +139,8 @@ void AMyShowcaseCharacter::StartChargingFireball(const FInputActionValue& Value)
 	bIsFireballCharging = true;																			//set the boolean to true, we start charging
 	CurrentFireballCharge = 0.0f;																		//reset the charge time
 
+	UE_LOG(LogTemp, Warning, TEXT("Charging Fireball"));												//Debug Text
+	
 	if (FireballChargeEffect)																			//checking if there is a VFX for cast
 	{
 		FireballChargeComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(
@@ -151,14 +153,13 @@ void AMyShowcaseCharacter::StartChargingFireball(const FInputActionValue& Value)
 			true
 		);
 
-		if (FireballChargeComponent)
+		if (bIsFireballCharging && FireballChargeComponent)
 		{
 			FireballChargeComponent->Activate(true);
 			FireballChargeComponent->SetWorldScale3D(FVector(0.3f));									//set starting scale to 0.3f
 		}																			
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("Charging Fireball"));												//Debug Text
 }
 
 void AMyShowcaseCharacter::UpdateChargingFireball(float DeltaTime)
@@ -186,8 +187,8 @@ void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
 	if (FireballChargeComponent)
 	{
 		// Detach and let it play out
-		FireballChargeComponent->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
-		FireballChargeComponent->SetAutoDestroy(true);
+		FireballChargeComponent->Deactivate(); // stop immediato dell'effetto
+		FireballChargeComponent->DestroyComponent(); // rimuove subito il componente
 		FireballChargeComponent = nullptr;
 	}
 
@@ -200,7 +201,7 @@ void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
 		FVector offset(50.f, 0.f, -20.f);
 
 		FVector spawnLocation = GetMesh()->GetSocketLocation(FName("headSocket")) + 
-								((GetActorForwardVector() * 100.0f) - FVector(0.f, 0.f, 50.f));	//Location + (forward -  offset)
+								((GetActorForwardVector() * 100.0f) - FVector(0.f, 0.f, 50.f));	//Location + (forward - offset)
 
 		FRotator SpawnRotation = GetActorRotation();
 

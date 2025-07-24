@@ -38,7 +38,7 @@ AFireballProjectile::AFireballProjectile()
 
 	FireballEffect = CreateDefaultSubobject<UNiagaraComponent>(TEXT("FireballEffect"));						//Component Init
 	//find the VFX
-	static ConstructorHelpers::FObjectFinder<UNiagaraSystem> FireballVFX(TEXT("/Game/Custom/VFX/NS_Fireball.NS_Fireball"));
+	static ConstructorHelpers::FObjectFinder<UNiagaraSystem> FireballVFX(TEXT("/Game/Custom/VFX/NS_NewFireball.NS_NewFireball"));
 	if (FireballVFX.Succeeded())
 	{
 		FireballEffect->SetAsset(FireballVFX.Object);
