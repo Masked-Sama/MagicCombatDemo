@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
+#include "Animation/AnimMontage.h"
 #include "MyShowcaseCharacter.generated.h"
 
 #pragma region Forward Declarations
@@ -38,6 +39,9 @@ protected:
 	/* Input Mapping Context */
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputMappingContext* ShowcaseMappingContext;
+
+	UPROPERTY(EditAnywhere, Category = "Animations")
+	UAnimSequence* CastFireballAnim;
 
 	#pragma region Movement
 

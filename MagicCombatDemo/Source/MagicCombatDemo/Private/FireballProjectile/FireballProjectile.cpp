@@ -53,6 +53,22 @@ AFireballProjectile::AFireballProjectile()
 void AFireballProjectile::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Optional: log owner for debug
+	if (GetOwner())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Ignoring owner: %s"), *GetOwner()->GetName());
+	}
+
+	// Ignore collision with owner
+	if (UPrimitiveComponent* CollisionComp = Cast<UPrimitiveComponent>(GetRootComponent()))
+	{
+		AActor* MyOwner = GetOwner();
+		if (MyOwner)
+		{
+			CollisionComp->IgnoreActorWhenMoving(MyOwner, true);
+		}
+	}
 }
 
 // Called every frame
@@ -64,7 +80,7 @@ void AFireballProjectile::Tick(float DeltaTime)
 
 void AFireballProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* otherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	if (OtherActor && OtherActor != this)
+	if (OtherActor && OtherActor != this && OtherActor != GetOwner())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Fireball hit: %s"), *OtherActor->GetName());
 		// TODO: Apply damage here

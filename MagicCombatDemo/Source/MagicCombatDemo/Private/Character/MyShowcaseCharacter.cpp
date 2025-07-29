@@ -138,15 +138,30 @@ void AMyShowcaseCharacter::StartChargingFireball(const FInputActionValue& Value)
 	//if not charging...																		
 	bIsFireballCharging = true;																			//set the boolean to true, we start charging
 	CurrentFireballCharge = 0.0f;																		//reset the charge time
+	GetCharacterMovement()->DisableMovement();
 
 	UE_LOG(LogTemp, Warning, TEXT("Charging Fireball"));												//Debug Text
 	
+	USkeletalMeshComponent* Skel = GetMesh();
+	if (CastFireballAnim && Skel)
+	{
+		Skel->PlayAnimation(CastFireballAnim, false);
+
+		// 2) Calcola il tempo corrispondente al frame 55
+		const float FrameRate = CastFireballAnim->GetSamplingFrameRate().AsDecimal();
+		const float FreezeTime = 55.0f / FrameRate;
+
+		// 3) Vai al tempo FreezeTime e metti play rate a zero
+		Skel->SetPosition(FreezeTime, false);
+		Skel->SetPlayRate(0.0f);
+	}
+
 	if (FireballChargeEffect)																			//checking if there is a VFX for cast
 	{
 		FireballChargeComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(
 			FireballChargeEffect,
 			GetMesh(),
-			FName("headSocket"), // Change if needed
+			FName("HeadSocket"), // Change if needed
 			FVector::ZeroVector,
 			FRotator::ZeroRotator,
 			EAttachLocation::SnapToTarget,
@@ -200,8 +215,8 @@ void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
 
 		FVector offset(50.f, 0.f, -20.f);
 
-		FVector spawnLocation = GetMesh()->GetSocketLocation(FName("headSocket")) + 
-								((GetActorForwardVector() * 100.0f) - FVector(0.f, 0.f, 50.f));	//Location + (forward - offset)
+		FVector spawnLocation = GetMesh()->GetSocketLocation(FName("HeadSocket")) + 
+								((GetActorForwardVector() * 100.0f) - FVector(0.f, 0.f, 0.f));	//Location + (forward - offset)
 
 		FRotator SpawnRotation = GetActorRotation();
 
@@ -211,14 +226,21 @@ void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
 		if (Fireball)
 		{
 			float ChargePercent = CurrentFireballCharge / MaxFireballCharge;
-			Fireball->Scale = FMath::Lerp(1.0f, 3.0f, ChargePercent);
+			Fireball->Scale = FMath::Lerp(1.0f, 12.0f, ChargePercent);
 			Fireball->Damage = FMath::Lerp(10.0f, 50.0f, ChargePercent);
 
 			Fireball->SetActorScale3D(FVector(Fireball->Scale));
 		}
 	}
 
+	USkeletalMeshComponent* Skel = GetMesh();
+	if (Skel)
+	{
+		Skel->SetPlayRate(1.0f);
+	}
+
 	CurrentFireballCharge = 0.0f;
+	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 }
 #pragma endregion
 
