@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
 #include "Animation/AnimMontage.h"
+#include "BubbleShield/ShieldBubbleActor.h"
 #include "MyShowcaseCharacter.generated.h"
 
 #pragma region Forward Declarations
@@ -84,8 +85,6 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastFireballAction;
 
-	//void CastFireball(const FInputActionValue& Value);				DEPRECATED
-
 	/* Charging Functions */
 	void StartChargingFireball(const FInputActionValue& Value);
 	void UpdateChargingFireball(float DeltaTime);
@@ -95,10 +94,19 @@ protected:
 
 	#pragma region Shield
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class AShieldBubbleActor> ShieldBubbleClass;
+
+	UPROPERTY()
+	AActor* ActiveShield;
+
+	bool bShieldIsActive = false;
+
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* CastShieldAction;
 
-	void CastShield(const FInputActionValue& Value);
+	void StartShield();
+	void StopShield();
 	#pragma endregion
 
 	#pragma region Teleport

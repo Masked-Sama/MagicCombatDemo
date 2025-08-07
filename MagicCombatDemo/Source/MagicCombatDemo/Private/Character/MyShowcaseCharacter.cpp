@@ -87,7 +87,8 @@ void AMyShowcaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 		EnhancedInput->BindAction(CastFireballAction, ETriggerEvent::Completed, this, &AMyShowcaseCharacter::ReleaseFireball);
 
 		//Shield Ability
-		EnhancedInput->BindAction(CastShieldAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::CastShield);
+		EnhancedInput->BindAction(CastShieldAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::StartShield);
+		EnhancedInput->BindAction(CastShieldAction, ETriggerEvent::Completed, this, &AMyShowcaseCharacter::StopShield);
 
 		//Teleport Ability
 		EnhancedInput->BindAction(CastTeleportAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::CastTeleport);
@@ -133,7 +134,7 @@ void AMyShowcaseCharacter::Look(const FInputActionValue& Value)
 
 void AMyShowcaseCharacter::StartChargingFireball(const FInputActionValue& Value)
 {
-	if (bIsFireballCharging) return;																	//check if we're already in charging
+	if (bIsFireballCharging || bShieldIsActive) return;													//check if we're already in charging
 
 	//if not charging...																		
 	bIsFireballCharging = true;																			//set the boolean to true, we start charging
@@ -245,13 +246,40 @@ void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
 #pragma endregion
 
 #pragma region Shield
-void AMyShowcaseCharacter::CastShield(const FInputActionValue& Value)
+void AMyShowcaseCharacter::StartShield()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Cast Shield!"));
+	if (ActiveShield || bIsFireballCharging) return;
 
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Cyan, TEXT("Cast Shield!"));
-	// TODO: Add Shield logic
+	UWorld* World = GetWorld();
+	if (World && ShieldBubbleClass)
+	{
+
+		FVector SpawnLocation = GetActorLocation(); // Puoi aggiungere offset
+		FRotator SpawnRotation = FRotator::ZeroRotator;
+
+		ActiveShield = World->SpawnActor<AActor>(ShieldBubbleClass, SpawnLocation, SpawnRotation);
+
+		UE_LOG(LogTemp, Warning, TEXT("Shield Spawned at"));
+
+		if (ActiveShield)
+		{
+			ActiveShield->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
+			bShieldIsActive = true;
+		}
+	}
+}
+
+void AMyShowcaseCharacter::StopShield()
+{
+	if (!bShieldIsActive) return;
+
+	if (ActiveShield)
+	{
+		ActiveShield->Destroy();
+		ActiveShield = nullptr;
+	}
+
+	bShieldIsActive = false;
 }
 #pragma endregion
 

@@ -271,6 +271,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\MagicCombatDemo\MagicCombatDemoGameMode.h"/>
+    <ClCompile Include="..\..\Source\MagicCombatDemo\Private\BubbleShield\ShieldBubbleActor.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MagicCombatDemo\Private\BubbleShield\ShieldBubbleActor.h"/>
     <ClCompile Include="..\..\Source\MagicCombatDemo\Private\Character\MyShowcaseCharacter.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

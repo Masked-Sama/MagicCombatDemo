@@ -57,6 +57,15 @@
     <Filter Include="Source\MagicCombatDemo\Private">
       <UniqueIdentifier>{690B8F94-0F24-3D93-84B3-CF811A701C71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\MagicCombatDemo\Private\BubbleShield">
+      <UniqueIdentifier>{59F7A340-16E6-313D-95F0-0D8644A910EF}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\MagicCombatDemo\Private\BubbleShield\ShieldBubbleActor.cpp">
+      <Filter>Source\MagicCombatDemo\Private\BubbleShield</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MagicCombatDemo\Private\BubbleShield\ShieldBubbleActor.h">
+      <Filter>Source\MagicCombatDemo\Private\BubbleShield</Filter>
+    </ClInclude>
     <Filter Include="Source\MagicCombatDemo\Private\Character">
       <UniqueIdentifier>{90614B3A-658B-3CAB-82C8-8B2F31BDE8D2}</UniqueIdentifier>
     </Filter>
