@@ -79,8 +79,8 @@ void AMyShowcaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 		//Default Look
 		EnhancedInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &AMyShowcaseCharacter::Look);
 		//Default Jump
-		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
-		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::MyJump);
+		EnhancedInput->BindAction(JumpAction, ETriggerEvent::Completed, this, &AMyShowcaseCharacter::MyStopJump);
 
 		//Fireball Ability
 		EnhancedInput->BindAction(CastFireballAction, ETriggerEvent::Started, this, &AMyShowcaseCharacter::StartChargingFireball);
@@ -100,6 +100,7 @@ void AMyShowcaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 
 void AMyShowcaseCharacter::Move(const FInputActionValue& Value)
 {
+	if (bIsFireballCharging) return;
 	FVector2D MovementVector = Value.Get<FVector2D>();
 
 	if (Controller)
@@ -126,6 +127,20 @@ void AMyShowcaseCharacter::Look(const FInputActionValue& Value)
 	}
 }
 
+void AMyShowcaseCharacter::MyJump()
+{
+	if (bIsFireballCharging) return;
+	bPressedJump = true;
+	JumpKeyHoldTime = 0.0f;
+}
+
+void AMyShowcaseCharacter::MyStopJump()
+{
+	if (bIsFireballCharging) return;
+	bPressedJump = false;
+	ResetJumpState();
+}
+
 #pragma endregion
 
 #pragma region Abilites
@@ -139,7 +154,6 @@ void AMyShowcaseCharacter::StartChargingFireball(const FInputActionValue& Value)
 	//if not charging...																		
 	bIsFireballCharging = true;																			//set the boolean to true, we start charging
 	CurrentFireballCharge = 0.0f;																		//reset the charge time
-	GetCharacterMovement()->DisableMovement();
 
 	UE_LOG(LogTemp, Warning, TEXT("Charging Fireball"));												//Debug Text
 	
@@ -241,7 +255,6 @@ void AMyShowcaseCharacter::ReleaseFireball(const FInputActionValue& Value)
 	}
 
 	CurrentFireballCharge = 0.0f;
-	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 }
 #pragma endregion
 

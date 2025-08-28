@@ -59,6 +59,8 @@ protected:
 	/* Movement Functions */
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+	void MyJump();
+	void MyStopJump();
 
 	#pragma endregion
 

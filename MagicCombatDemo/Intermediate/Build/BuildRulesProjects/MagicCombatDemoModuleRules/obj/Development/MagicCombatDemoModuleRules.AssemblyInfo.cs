@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MagicCombatDemoModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+519b5c6eb9b82a5fa03f313514cd2c0a1d0573aa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66a09b4f41b6b980dff30e0c5146f792dd2f13a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MagicCombatDemoModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MagicCombatDemoModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
